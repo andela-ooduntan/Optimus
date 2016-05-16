@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/andeladev/Downloads/AndroidStudioProjects/app/build/intermediates/res/merged/debug/menu/home.xml",
+        "source": "/Users/andeladev/Downloads/AndroidStudioProjects/app/src/main/res/menu/home.xml"
+    },
+    {
+        "merged": "/Users/andeladev/Downloads/AndroidStudioProjects/app/build/intermediates/res/merged/debug/menu/splash.xml",
+        "source": "/Users/andeladev/Downloads/AndroidStudioProjects/app/src/main/res/menu/splash.xml"
+    },
+    {
+        "merged": "/Users/andeladev/Downloads/AndroidStudioProjects/app/build/intermediates/res/merged/debug/menu/overflowmenu.xml",
+        "source": "/Users/andeladev/Downloads/AndroidStudioProjects/app/src/main/res/menu/overflowmenu.xml"
+    }
+]

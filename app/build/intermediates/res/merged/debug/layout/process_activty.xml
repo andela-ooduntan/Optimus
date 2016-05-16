@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="1"
+              android:background="#fffefe">
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:local="http://schemas.android.com/apk/res-auto"
+           android:id="@+id/toolbar"
+           android:layout_width="match_parent"
+           android:layout_height="?android:attr/actionBarSize"
+           android:background="#225295">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PROCESS"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+
+    <RelativeLayout
+        android:layout_height="70dp"
+        android:layout_width="fill_parent"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/tab3">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="17dp"
+            android:id="@+id/brightness"
+            android:src="@drawable/ic_settings_power_black_36dp"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Background Sync"
+            android:textColor="#225295"
+            android:textSize="18sp"
+            android:layout_toRightOf="@id/brightness"
+            android:id="@+id/dds" />
+
+        <Switch
+            android:id="@+id/sync_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:checked="false" />
+
+
+    </RelativeLayout>
+
+    </LinearLayout>

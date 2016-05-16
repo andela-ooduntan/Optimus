@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="1"
+              android:background="#fffefe">
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                       xmlns:local="http://schemas.android.com/apk/res-auto"
+                                       android:id="@+id/toolbar"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="?android:attr/actionBarSize"
+                                       android:background="#225295">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WELCOME"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NETWORK"
+        android:id="@+id/network"
+        android:width="340dp"
+        android:layout_marginTop="33dp"
+        android:background="#225295"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DISPLAY"
+        android:id="@+id/display"
+        android:layout_marginTop="39dp"
+        android:background="#225295"
+        android:width="340dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/process"
+        android:text="PROCESS"
+        android:width="340dp"
+        android:layout_marginTop="33dp"
+        android:background="#225295"
+        android:layout_gravity="center_horizontal"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="181dp"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout2"
+        >
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/restore"
+            android:text="Restore"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="#2f3b46"
+            android:layout_marginRight="31dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/optimize"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="28dp"
+            android:text="OPTIMIZE"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="#2f3b46"/>
+    </RelativeLayout>
+</LinearLayout>

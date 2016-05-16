@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="#fefdfd">
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="#225295">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NETWORK"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_height="70dp"
+        android:layout_width="fill_parent"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/bluetooth"
+            android:layout_marginTop="17dp"
+            android:src="@drawable/ic_settings_bluetooth_black_24dp"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Bluetooth"
+            android:textColor="#225295"
+            android:textSize="18sp"
+            android:layout_toRightOf="@id/bluetooth"
+            />
+
+        <Switch
+            android:id="@+id/bluetooth_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:checked="false" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_height="70dp"
+        android:layout_width="fill_parent"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#dadada"
+        android:id="@+id/vi">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/bluetooth2"
+            android:layout_marginTop="17dp"
+            android:src="@drawable/connection"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="WIFI network"
+            android:textColor="#225295"
+            android:textSize="18sp"
+            android:layout_toRightOf="@id/bluetooth2"
+            android:id="@+id/wifitext"
+            android:layout_alignBottom="@+id/bluetooth2" />
+
+
+        <Switch
+            android:id="@+id/wifi_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:checked="false"
+            android:clickable="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_height="71dp"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#dadada"
+        android:id="@+id/relativeLayout">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/imageView"
+            android:layout_marginTop="17dp"
+            android:src="@drawable/gsignalphoneinterfacesymbol"
+            android:layout_marginRight="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="3G Network"
+            android:textColor="#225295"
+            android:textSize="18sp"
+            android:layout_toRightOf="@+id/imageView"
+            android:id="@+id/textView"
+            android:layout_alignBottom="@+id/imageView" />
+
+        <Switch
+            android:id="@+id/threeG_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:checked="false"
+            android:clickable="true" />
+    </RelativeLayout>
+</LinearLayout>
