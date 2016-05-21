@@ -15,7 +15,7 @@ public class Process_activty extends AppCompatActivity {
         setContentView(R.layout.process_activty);
 
         initViews();
-        super.onBackPressed();
+        //super.onBackPressed();
     }
 
     public void initViews () {

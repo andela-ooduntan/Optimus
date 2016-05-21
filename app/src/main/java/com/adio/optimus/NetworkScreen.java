@@ -33,7 +33,7 @@ public class NetworkScreen extends AppCompatActivity {
         bluetoothController =  BluetoothAdapter.getDefaultAdapter();
         wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         initViews();
-        super.onBackPressed();
+        //super.onBackPressed();
     }
 
     public void initViews() {

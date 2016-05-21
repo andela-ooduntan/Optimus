@@ -19,7 +19,7 @@ public class screen_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_activity);
         initViews();
-        super.onBackPressed();
+        //super.onBackPressed();
     }
 
 

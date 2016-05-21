@@ -33,6 +33,7 @@ public class Main_menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
+        bluetoothController =  BluetoothAdapter.getDefaultAdapter();
         initViews();
 
         Timer myTimer = new Timer();
@@ -85,9 +86,9 @@ public class Main_menu extends AppCompatActivity {
 
 
     public void initViews(){
-        network =(Button) findViewById(R.id.network);
-        process =(Button) findViewById(R.id.process);
-        screen =(Button) findViewById(R.id.screen);
+        network =(Button) findViewById(R.id.network_btn);
+        process =(Button) findViewById(R.id.process_btn);
+        screen =(Button) findViewById(R.id.display_btn);
         btnOpt = (Button) findViewById(R.id.optimize);
         btnOpt2 = (Button) findViewById(R.id.restore);
 
