@@ -1,10 +1,14 @@
 package com.adio.optimus;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.support.v4.view.ViewPager;
@@ -29,45 +33,62 @@ public class Main_menu extends AppCompatActivity {
     BluetoothAdapter bluetoothController;
     Context cont;
     Boolean reBlue=false,reWifi = false,reData = false, reScreen= false, reRotation = false, reSyn = false;
+    boolean busyBluetooth = false, activate = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
         bluetoothController =  BluetoothAdapter.getDefaultAdapter();
+        IntentFilter filter1 = new IntentFilter(BluetoothDevice.ACTION_ACL_CONNECTED);
+        IntentFilter filter2 = new IntentFilter(BluetoothDevice.ACTION_ACL_DISCONNECT_REQUESTED);
+        IntentFilter filter3 = new IntentFilter(BluetoothDevice.ACTION_ACL_DISCONNECTED);
+
         initViews();
-
-        Timer myTimer = new Timer();
-        myTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                timer_method();
-            }
-        }, 0, 1800000);
-
     }
 
     private void timer_method(){
-        Timer nextTimer=new Timer();
-        nextTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                ContentResolver.setMasterSyncAutomatically(true);
-                try {
-                    setMobileDataEnabled(true);
-                } catch (Exception e) {
-                }
-            }
-        }, 300000);
         ContentResolver.setMasterSyncAutomatically(false);
         try{
             setMobileDataEnabled(false);
         }catch (Exception e){}
         this.runOnUiThread(Timer_Tick);
+        if (!activate) activateResources();
 
     }
-    private Runnable Timer_Tick=new Runnable(){
+    private  void activateResources() {
+        Timer nextTimer=new Timer();
+        nextTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Log.d("The second coming", "kjkjkjkkjgftfytfyy");
+
+                ContentResolver.setMasterSyncAutomatically(false);
+                try {
+
+//                    Log.d("TAG","Health: " + bluetoothController.getProfileConnectionState(3));
+//                    Log.d("TAG","HEADSET: " + bluetoothController.getProfileConnectionState(1));
+//                    Log.d("TAG","A2dp: " + bluetoothController.getProfileConnectionState(2));
+                    setMobileDataEnabled(false);
+                } catch (Exception e) {
+                }
+            }
+        }, 180000);
+        activate = true;
+        this.runOnUiThread(Timer_Tick2);
+        timer_method();
+
+    }
+
+    private Runnable Timer_Tick2 = new Runnable(){
         public void run(){
-            Toast.makeText(getApplicationContext(), "Background Sync and 3G was Turned on for 5 min after 30 min", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "3G turned on for 3min", Toast.LENGTH_LONG).show();
+        }
+    };
+
+    private Runnable Timer_Tick = new Runnable(){
+        public void run(){
+            Toast.makeText(getApplicationContext(), "3G turned off", Toast.LENGTH_LONG).show();
         }
     };
 
@@ -125,15 +146,15 @@ public class Main_menu extends AppCompatActivity {
                 int counter = 0;
                 //Toast.makeText(Home.this, counter+" items were Optimized", Toast.LENGTH_LONG).show();
                 // TODO Auto-generated method stub
-                if (bluetoothController.isEnabled()) {
+                if (bluetoothController.isEnabled() && !busyBluetooth) {
                     counter++;
                     bluetoothController.disable();
                     reBlue = true;
                 }
-                if (WifiChecker()) {
+                if (WifiChecker() && !checkIfWifiIsBusy()) {
                     counter++;
                     wifiManager.setWifiEnabled(false);
-                    reWifi =true;
+                    reWifi = true;
 
                 }
 
@@ -145,16 +166,36 @@ public class Main_menu extends AppCompatActivity {
 
 
                 if (checkMobileDataStatus() == true) {
+
+
+//                    try {
+//                        setMobileDataEnabled(false);
+//                    } catch (ClassNotFoundException e) {
+//                        Log.d("jnjnjnj", "jkjkjjjkjkj");
+//                    } catch (NoSuchFieldException e) {
+//                        Log.d("jnjnjnj", "jkjkjjjkjkj");
+//
+//                    } catch (IllegalAccessException e) {
+//                        Log.d("jnjnjnj", "jkjkjjjkjkj");
+//
+//                    } catch (NoSuchMethodException e) {
+//                        Log.d("jnjnjnj", "jkjkjjjkjkj");
+//
+//                    } catch (InvocationTargetException e) {
+//                        Log.d("jnjnjnj", "jkjkjjjkjkj");
+//
+//                    }
+//                    reData=true;
+
                     //Boolean name=turnData(false);
-                    try {
-                        setMobileDataEnabled(false);
-                        reData = true;
-                        counter++;
-                    } catch (InvocationTargetException es) {
-                        Toast.makeText(getApplicationContext(), es.getCause().toString(), Toast.LENGTH_LONG).show();
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
-                    }
+                    Timer myTimer = new Timer();
+                    myTimer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            timer_method();
+                            reData = true;
+                        }
+                    }, 0);
                 }
 
 
@@ -203,7 +244,34 @@ public class Main_menu extends AppCompatActivity {
             }
         });
 
+        final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 
+                if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                     //Device found
+                    busyBluetooth = false;
+                }
+                else if (BluetoothDevice.ACTION_ACL_CONNECTED.equals(action)) {
+                     //Device is now connected
+                    busyBluetooth = true;
+                }
+                else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
+                     //Done searching
+                    busyBluetooth = false;
+                }
+                else if (BluetoothDevice.ACTION_ACL_DISCONNECT_REQUESTED.equals(action)) {
+                     //Device is about to disconnect
+                    busyBluetooth = false;
+                }
+                else if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(action)) {
+                     //Device has disconnected
+                    busyBluetooth = false;
+                }
+            }
+        };
 
         btnOpt2.setOnClickListener(new View.OnClickListener() {
             WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
@@ -273,6 +341,16 @@ public class Main_menu extends AppCompatActivity {
             // TODO do whatever error handling you want here
         }
         return  mobileDataEnabled;
+    }
+
+    public boolean checkIfWifiIsBusy(){
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        if (mWifi.isConnected()) {
+            return true;
+        }
+        return false;
     }
 
 

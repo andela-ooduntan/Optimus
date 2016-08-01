@@ -40,12 +40,12 @@
         "source": "/Users/andeladev/Downloads/AndroidStudioProjects/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/layout/layout_tab_icon.xml"
     },
     {
-        "merged": "/Users/andeladev/Downloads/AndroidStudioProjects/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
-        "source": "/Users/andeladev/Downloads/AndroidStudioProjects/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/notification_template_big_media_narrow.xml"
-    },
-    {
         "merged": "/Users/andeladev/Downloads/AndroidStudioProjects/app/build/intermediates/res/merged/debug/layout/content_screen_activity.xml",
         "source": "/Users/andeladev/Downloads/AndroidStudioProjects/app/src/main/res/layout/content_screen_activity.xml"
+    },
+    {
+        "merged": "/Users/andeladev/Downloads/AndroidStudioProjects/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
+        "source": "/Users/andeladev/Downloads/AndroidStudioProjects/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/notification_template_big_media_narrow.xml"
     },
     {
         "merged": "/Users/andeladev/Downloads/AndroidStudioProjects/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",

@@ -63,13 +63,7 @@ public class Home extends AppCompatActivity {
         //tabs.setDistributeEvenly(true);
 		//tabs.setViewPager(mPager);
 		optimize();
-        Timer myTimer = new Timer();
-        myTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                timer_method();
-            }
-        },0,1800000);
+
 	}
 
     public void initViews(){
@@ -223,7 +217,13 @@ public class Home extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (threeGSwitch.isChecked() == true) {
                     try {
-                        setMobileDataEnabled(true);
+                        Timer myTimer = new Timer();
+                        myTimer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                timer_method();
+                            }
+                        }, 0, 1800000);
                         reData=false;
                     }catch (Exception e){Toast.makeText(getApplicationContext(), " items were Optmized", Toast.LENGTH_LONG).show();}
                 } else {
@@ -273,16 +273,6 @@ public class Home extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
-
-
-
-
-
 
 		btnOpt.setOnClickListener(new View.OnClickListener() {
             WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
@@ -368,10 +358,6 @@ public class Home extends AppCompatActivity {
                     result+=" SYNCHRONIZATION ";
                 }
 
-
-
-
-
                 Toast.makeText(getApplicationContext(), counter+" items were Optimized: "+result, Toast.LENGTH_LONG).show();
 			}
 		});
@@ -451,10 +437,6 @@ public class Home extends AppCompatActivity {
         return true;
     }
 
-
-
-
-
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
@@ -472,19 +454,6 @@ public class Home extends AppCompatActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
-
-
-
-
-
-//    @Override
-//    public void onActionModeStarted (Bundle savedInstanceState) {
-//        super.onActionModeStarted(savedInstanceState);
-//
-//        TextView tv = (TextView) getView().findViewById(R.id.text);
-//        tv.setText(getActivity.getSomeText());
-//    }
 }
 
 

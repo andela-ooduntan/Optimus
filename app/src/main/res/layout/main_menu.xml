@@ -49,9 +49,19 @@
         android:layout_gravity="center_horizontal"/>
 
 
+    <Button
+        android:layout_width="333dp"
+        android:layout_height="wrap_content"
+        android:text="Wake Lock"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.21"
+        android:background="#27477e"
+        android:layout_marginTop="25dp"/>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="181dp"
+        android:layout_height="85dp"
         />
 
 

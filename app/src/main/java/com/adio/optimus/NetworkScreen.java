@@ -1,8 +1,12 @@
 package com.adio.optimus;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
@@ -16,6 +20,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -24,6 +29,7 @@ public class NetworkScreen extends AppCompatActivity {
     BluetoothAdapter bluetoothController; //= BluetoothAdapter.getDefaultAdapter();
     WifiManager wifiManager;// = (WifiManager) getSystemService(Context.WIFI_SERVICE);
     Switch wifi,bluetooth,threeGSwitch;
+    boolean busyBluetooth = false;
 
 
     @Override
@@ -33,6 +39,7 @@ public class NetworkScreen extends AppCompatActivity {
         bluetoothController =  BluetoothAdapter.getDefaultAdapter();
         wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         initViews();
+
         //super.onBackPressed();
     }
 
@@ -83,21 +90,22 @@ public class NetworkScreen extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (threeGSwitch.isChecked() == true) {
                     try {
-                        setMobileDataEnabled(true);
+                        setMobileDataEnabled(getBaseContext(), true);
                     } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), " items were Optmized", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                     }
                 } else {
                     try {
-                        setMobileDataEnabled(false);
+                        setMobileDataEnabled(getApplicationContext(), false);
                     } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), " items were ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
 
     }
+
 
     private Boolean  checkMobileDataStatus(){
         boolean mobileDataEnabled = false; // Assume disabled
@@ -115,17 +123,23 @@ public class NetworkScreen extends AppCompatActivity {
         return  mobileDataEnabled;
     }
 
-    public void setMobileDataEnabled(boolean enabled) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        final ConnectivityManager conman = (ConnectivityManager)  getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        final Class<?> conmanClass = Class.forName(conman.getClass().getName());
-        final java.lang.reflect.Field connectivityManagerField = conmanClass.getDeclaredField("mService");
-        connectivityManagerField.setAccessible(true);
-        final Object connectivityManager = connectivityManagerField.get(conman);
-        final Class<?> connectivityManagerClass =  Class.forName(connectivityManager.getClass().getName());
-        final Method setMobileDataEnabledMethod = connectivityManagerClass.getDeclaredMethod("setMobileDataEnabled", Boolean.TYPE);
-        setMobileDataEnabledMethod.setAccessible(true);
+    private void setMobileDataEnabled(Context context, boolean enabled) {
+        try {
 
-        setMobileDataEnabledMethod.invoke(connectivityManager, enabled);
+            final ConnectivityManager conman = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            final Class conmanClass = Class.forName(conman.getClass().getName());
+            final Field iConnectivityManagerField = conmanClass.getDeclaredField("mService");
+            iConnectivityManagerField.setAccessible(true);
+            final Object iConnectivityManager = iConnectivityManagerField.get(conman);
+            final Class iConnectivityManagerClass = Class.forName(iConnectivityManager.getClass().getName());
+            final Method setMobileDataEnabledMethod = iConnectivityManagerClass.getDeclaredMethod("setMobileDataEnabled", Boolean.TYPE);
+            setMobileDataEnabledMethod.setAccessible(true);
+
+            setMobileDataEnabledMethod.invoke(iConnectivityManager, enabled);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
