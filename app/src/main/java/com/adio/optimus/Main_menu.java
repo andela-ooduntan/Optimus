@@ -32,6 +32,7 @@ public class Main_menu extends AppCompatActivity {
     Button btnOpt,btnOpt2;
     BluetoothAdapter bluetoothController;
     Context cont;
+    WifiManager wifiManager;
     Boolean reBlue=false,reWifi = false,reData = false, reScreen= false, reRotation = false, reSyn = false;
     boolean busyBluetooth = false, activate = false;
 
@@ -39,6 +40,7 @@ public class Main_menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
+        wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         bluetoothController =  BluetoothAdapter.getDefaultAdapter();
         IntentFilter filter1 = new IntentFilter(BluetoothDevice.ACTION_ACL_CONNECTED);
         IntentFilter filter2 = new IntentFilter(BluetoothDevice.ACTION_ACL_DISCONNECT_REQUESTED);
@@ -139,8 +141,6 @@ public class Main_menu extends AppCompatActivity {
 
 
         btnOpt.setOnClickListener(new View.OnClickListener() {
-            WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-
             @Override
             public void onClick(View v) {
                 int counter = 0;
@@ -151,11 +151,13 @@ public class Main_menu extends AppCompatActivity {
                     bluetoothController.disable();
                     reBlue = true;
                 }
-                if (WifiChecker() && !checkIfWifiIsBusy()) {
+                if (!WifiChecker()) {
                     counter++;
                     wifiManager.setWifiEnabled(false);
                     reWifi = true;
 
+                } else {
+                    Toast.makeText(getApplicationContext(), "Wifi is on and connected " + WifiChecker() , Toast.LENGTH_LONG).show();
                 }
 
                 if (android.provider.Settings.System.getInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION, 0) == 1) {
@@ -274,7 +276,6 @@ public class Main_menu extends AppCompatActivity {
         };
 
         btnOpt2.setOnClickListener(new View.OnClickListener() {
-            WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 
             @Override
             public void onClick(View v) {
@@ -355,7 +356,7 @@ public class Main_menu extends AppCompatActivity {
 
 
     public boolean WifiChecker(){
-        WifiManager  wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+
         if (wifiManager.getConnectionInfo().getNetworkId() == -1){
             return false;
         }else{

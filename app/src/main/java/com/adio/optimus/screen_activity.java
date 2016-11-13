@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-public class screen_activity extends AppCompatActivity {
+public class  screen_activity extends AppCompatActivity {
     Switch rotation,Brightness;
 
     @Override

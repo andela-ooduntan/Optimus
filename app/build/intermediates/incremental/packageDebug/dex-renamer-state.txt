@@ -1,0 +1,7 @@
+#Sun Nov 13 11:46:53 WAT 2016
+base.0=/Users/heavywater/Project/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_f12eb458af5f21857432ed10c1cf667bff4a2abf
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/heavywater/Project/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c8040feb11287b6de3862f0cf24e0177a5b60d12/classes.dex
+base.1=/Users/heavywater/Project/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c8040feb11287b6de3862f0cf24e0177a5b60d12
+file.0=/Users/heavywater/Project/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_f12eb458af5f21857432ed10c1cf667bff4a2abf/classes.dex
