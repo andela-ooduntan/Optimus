@@ -361,6 +361,7 @@ public class Main_menu extends AppCompatActivity {
 
 
     public void turnOffData(int DelayTime) {
+        int realTimer = DelayTime === null ? DelayTime : 0;
         Timer myTimer = new Timer();
         myTimer.schedule(new TimerTask() {
             @Override
@@ -368,7 +369,6 @@ public class Main_menu extends AppCompatActivity {
                 timer_method();
                 reData = true;
 //                Toast.makeText(Home.this, +" items were Optimized", Toast.LENGTH_LONG).show();
-
             }
         }, DelayTime);
     }
