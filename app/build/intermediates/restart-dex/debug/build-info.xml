@@ -5,26 +5,35 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="14670047554235"
+    timestamp="23556524252356"
     token="-8982690345928476235"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="959" />
+        duration="3453" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="118" />
+        duration="666" />
     <task
         name="verifier"
-        duration="5" />
+        duration="26" />
 
     <artifact
-        location="/Users/heavywater/Project/Optimus/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/Users/heavywater/Project/Optimus/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+        type="RESOURCES" />
+    <artifact
+        location="/Users/heavywater/Project/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
+        type="DEX" />
+    <artifact
+        location="/Users/heavywater/Project/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
+        type="DEX" />
+    <artifact
+        location="/Users/heavywater/Project/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex"
+        type="DEX" />
 
     <build
         timestamp="14670047554235"
@@ -32,6 +41,22 @@
         <artifact
             location="/Users/heavywater/Project/Optimus/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="23556524252356"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/heavywater/Project/Optimus/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
+        <artifact
+            location="/Users/heavywater/Project/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex"
+            type="DEX" />
+        <artifact
+            location="/Users/heavywater/Project/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
+            type="DEX" />
+        <artifact
+            location="/Users/heavywater/Project/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>

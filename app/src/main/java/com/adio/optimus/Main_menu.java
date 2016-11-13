@@ -5,19 +5,24 @@ import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
+import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -31,7 +36,7 @@ public class Main_menu extends AppCompatActivity {
     Button network, process, screen;
     Button btnOpt,btnOpt2;
     BluetoothAdapter bluetoothController;
-    Context cont;
+    Context context;
     WifiManager wifiManager;
     Boolean reBlue=false,reWifi = false,reData = false, reScreen= false, reRotation = false, reSyn = false;
     boolean busyBluetooth = false, activate = false;
@@ -40,6 +45,7 @@ public class Main_menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
+        context = this;
         wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         bluetoothController =  BluetoothAdapter.getDefaultAdapter();
         IntentFilter filter1 = new IntentFilter(BluetoothDevice.ACTION_ACL_CONNECTED);
@@ -109,9 +115,9 @@ public class Main_menu extends AppCompatActivity {
 
 
     public void initViews(){
-        network =(Button) findViewById(R.id.network_btn);
-        process =(Button) findViewById(R.id.process_btn);
-        screen =(Button) findViewById(R.id.display_btn);
+        network = (Button) findViewById(R.id.network_btn);
+        process = (Button) findViewById(R.id.process_btn);
+        screen = (Button) findViewById(R.id.display_btn);
         btnOpt = (Button) findViewById(R.id.optimize);
         btnOpt2 = (Button) findViewById(R.id.restore);
 
@@ -137,12 +143,10 @@ public class Main_menu extends AppCompatActivity {
         });
 
 
-
-
-
         btnOpt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 int counter = 0;
                 //Toast.makeText(Home.this, counter+" items were Optimized", Toast.LENGTH_LONG).show();
                 // TODO Auto-generated method stub
@@ -169,35 +173,61 @@ public class Main_menu extends AppCompatActivity {
 
                 if (checkMobileDataStatus() == true) {
 
+                    LayoutInflater layoutInflater = LayoutInflater.from(context);
+                    View prompt = layoutInflater.inflate(R.layout.delay_dialog, null);
+                    AlertDialog.Builder alertBulder = new AlertDialog.Builder(context);
+                    alertBulder.setView(prompt);
+                    final EditText input = (EditText) prompt.findViewById(R.id.userInput);
+
+                    alertBulder
+                            .setCancelable(false)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    // Do the timer here
+                                    turnOffData(Integer.parseInt(input.getText().toString()));
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.cancel();
+                                }
+                            });
+                    AlertDialog alertDialog = alertBulder.create();
+                    alertBulder.show();
+//
+//
+
 
 //                    try {
 //                        setMobileDataEnabled(false);
 //                    } catch (ClassNotFoundException e) {
-//                        Log.d("jnjnjnj", "jkjkjjjkjkj");
+//                        Log.d("jnjnjnj", "error 1 ");
 //                    } catch (NoSuchFieldException e) {
-//                        Log.d("jnjnjnj", "jkjkjjjkjkj");
+//                        Log.d("jnjnjnj", "error 2");
 //
 //                    } catch (IllegalAccessException e) {
-//                        Log.d("jnjnjnj", "jkjkjjjkjkj");
+//                        Log.d("jnjnjnj", "error 3");
 //
 //                    } catch (NoSuchMethodException e) {
-//                        Log.d("jnjnjnj", "jkjkjjjkjkj");
+//                        Log.d("jnjnjnj", "error 4" + e);
 //
 //                    } catch (InvocationTargetException e) {
-//                        Log.d("jnjnjnj", "jkjkjjjkjkj");
+//                        Log.d("jnjnjnj", "error 5");
 //
 //                    }
 //                    reData=true;
 
-                    //Boolean name=turnData(false);
-                    Timer myTimer = new Timer();
-                    myTimer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            timer_method();
-                            reData = true;
-                        }
-                    }, 0);
+//                    Boolean name=turnData(false);
+//                    Timer myTimer = new Timer();
+//                    myTimer.schedule(new TimerTask() {
+//                        @Override
+//                        public void run() {
+//                            timer_method();
+//                            reData = true;
+//                        }
+//                    }, 0);
                 }
 
 
@@ -325,6 +355,22 @@ public class Main_menu extends AppCompatActivity {
             }
         });
 
+    }
+
+
+
+
+    public void turnOffData(int DelayTime) {
+        Timer myTimer = new Timer();
+        myTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                timer_method();
+                reData = true;
+//                Toast.makeText(Home.this, +" items were Optimized", Toast.LENGTH_LONG).show();
+
+            }
+        }, DelayTime);
     }
 
 

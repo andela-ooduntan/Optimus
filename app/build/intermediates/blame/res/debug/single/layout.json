@@ -4,12 +4,12 @@
         "source": "/Users/heavywater/Project/Optimus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/abc_alert_dialog_material.xml"
     },
     {
-        "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
-        "source": "/Users/heavywater/Project/Optimus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/abc_expanded_menu_layout.xml"
-    },
-    {
         "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
         "source": "/Users/heavywater/Project/Optimus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/Users/heavywater/Project/Optimus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/abc_expanded_menu_layout.xml"
     },
     {
         "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/layout/process_activty.xml",
@@ -52,6 +52,10 @@
         "source": "/Users/heavywater/Project/Optimus/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/layout/design_navigation_item.xml"
     },
     {
+        "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/layout/delay_dialog.xml",
+        "source": "/Users/heavywater/Project/Optimus/app/src/main/res/layout/delay_dialog.xml"
+    },
+    {
         "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
         "source": "/Users/heavywater/Project/Optimus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/abc_activity_chooser_view_list_item.xml"
     },
@@ -68,12 +72,12 @@
         "source": "/Users/heavywater/Project/Optimus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/abc_activity_chooser_view.xml"
     },
     {
-        "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/Users/heavywater/Project/Optimus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/abc_screen_toolbar.xml"
-    },
-    {
         "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/layout/fragment_list.xml",
         "source": "/Users/heavywater/Project/Optimus/app/src/main/res/layout/fragment_list.xml"
+    },
+    {
+        "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/heavywater/Project/Optimus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/abc_screen_toolbar.xml"
     },
     {
         "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
