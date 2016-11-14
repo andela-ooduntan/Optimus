@@ -361,7 +361,7 @@ public class Main_menu extends AppCompatActivity {
 
 
     public void turnOffData(int DelayTime) {
-        int realTimer = DelayTime === null ? DelayTime : 0;
+//        int realTimer = DelayTime == null ? DelayTime : 0;
         Timer myTimer = new Timer();
         myTimer.schedule(new TimerTask() {
             @Override
