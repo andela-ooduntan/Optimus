@@ -1,4 +1,4 @@
-#Sun Nov 20 14:08:20 WAT 2016
+#Sun Nov 20 18:12:55 WAT 2016
 base.0=/Users/heavywater/Project/Android/Optimus/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_d2fdf217795ef2802e65948f377b540bf2cdbdac
 renamed.1=classes.dex
 renamed.0=classes2.dex

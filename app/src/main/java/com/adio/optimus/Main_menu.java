@@ -61,7 +61,7 @@ public class Main_menu extends AppCompatActivity {
             setMobileDataEnabled(false);
         }catch (Exception e){}
         this.runOnUiThread(Timer_Tick);
-        if (!activate) activateResources();
+//        if (!activate) activateResources();
 
     }
     private  void activateResources() {
@@ -183,7 +183,7 @@ public class Main_menu extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     // Do the timer here
-                                    turnOffData(Integer.parseInt(input.getText().toString()));
+                                    turnOffData(input.getText().toString());
                                 }
                             })
                             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -358,7 +358,15 @@ public class Main_menu extends AppCompatActivity {
 
 
 
-    public void turnOffData(int DelayTime) {
+    public void turnOffData(String DelayTime) {
+        int delayTime = 0;
+
+        try {
+            delayTime = Integer.parseInt(DelayTime);
+        } catch (Exception e) {
+            Toast.makeText(this, "Invalid time", Toast.LENGTH_LONG).show();
+
+        }
 //        int realTimer = DelayTime || 0;
         Timer myTimer = new Timer();
         myTimer.schedule(new TimerTask() {
@@ -368,7 +376,7 @@ public class Main_menu extends AppCompatActivity {
                 reData = true;
 //                Toast.makeText(Home.this, +" items were Optimized", Toast.LENGTH_LONG).show();
             }
-        }, DelayTime);
+        }, delayTime);
     }
 
 

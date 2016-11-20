@@ -5,29 +5,29 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="16756664555418"
+    timestamp="22665111768679"
     token="5633351700888487189"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="729" />
+        duration="1481" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="106" />
+        duration="224" />
     <task
         name="verifier"
-        duration="5" />
+        duration="1" />
 
     <artifact
         location="/Users/heavywater/Project/Android/Optimus/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="16756664555418"
+        timestamp="22665111768679"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/heavywater/Project/Android/Optimus/app/build/outputs/apk/app-debug.apk"
