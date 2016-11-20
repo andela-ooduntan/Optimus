@@ -160,8 +160,6 @@ public class Main_menu extends AppCompatActivity {
                     wifiManager.setWifiEnabled(false);
                     reWifi = true;
 
-                } else {
-                    Toast.makeText(getApplicationContext(), "Wifi is on and connected " + WifiChecker() , Toast.LENGTH_LONG).show();
                 }
 
                 if (android.provider.Settings.System.getInt(getContentResolver(), Settings.System.ACCELEROMETER_ROTATION, 0) == 1) {
@@ -361,7 +359,7 @@ public class Main_menu extends AppCompatActivity {
 
 
     public void turnOffData(int DelayTime) {
-//        int realTimer = DelayTime == null ? DelayTime : 0;
+//        int realTimer = DelayTime || 0;
         Timer myTimer = new Timer();
         myTimer.schedule(new TimerTask() {
             @Override

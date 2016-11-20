@@ -1,14 +1,14 @@
 [
     {
-        "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/menu/splash.xml",
-        "source": "/Users/heavywater/Project/Optimus/app/src/main/res/menu/splash.xml"
+        "merged": "/Users/heavywater/Project/Android/Optimus/app/build/intermediates/res/merged/debug/menu/overflowmenu.xml",
+        "source": "/Users/heavywater/Project/Android/Optimus/app/src/main/res/menu/overflowmenu.xml"
     },
     {
-        "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/menu/home.xml",
-        "source": "/Users/heavywater/Project/Optimus/app/src/main/res/menu/home.xml"
+        "merged": "/Users/heavywater/Project/Android/Optimus/app/build/intermediates/res/merged/debug/menu/home.xml",
+        "source": "/Users/heavywater/Project/Android/Optimus/app/src/main/res/menu/home.xml"
     },
     {
-        "merged": "/Users/heavywater/Project/Optimus/app/build/intermediates/res/merged/debug/menu/overflowmenu.xml",
-        "source": "/Users/heavywater/Project/Optimus/app/src/main/res/menu/overflowmenu.xml"
+        "merged": "/Users/heavywater/Project/Android/Optimus/app/build/intermediates/res/merged/debug/menu/splash.xml",
+        "source": "/Users/heavywater/Project/Android/Optimus/app/src/main/res/menu/splash.xml"
     }
 ]
