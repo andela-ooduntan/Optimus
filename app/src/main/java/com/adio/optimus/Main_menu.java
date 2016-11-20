@@ -372,11 +372,15 @@ public class Main_menu extends AppCompatActivity {
         myTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                timer_method();
+                try {
+                    setMobileDataEnabled(false);
+                } catch (Exception e) {
+                }
+
                 reData = true;
 //                Toast.makeText(Home.this, +" items were Optimized", Toast.LENGTH_LONG).show();
             }
-        }, delayTime);
+        }, (delayTime * 1000 * 60));
     }
 
 
